@@ -7,12 +7,14 @@
   (let [cnt (r/atom 0)]
     (fn []
       [:div
+        [:h2 "Counter"]
         [:input {:type "text" :readonly true :value @cnt}]
         [:button {:on-click #(swap! cnt inc)}
          "Count"]])))
 
 (defn app []
   [:main
+   [:h1 "Seven GUIs"]
    [counter]])
 
 
