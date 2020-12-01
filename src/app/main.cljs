@@ -8,7 +8,7 @@
     (fn []
       [:div
         [:h2 "Counter"]
-        [:input {:type "text" :readonly true :value @cnt}]
+        [:input {:type "text" :readOnly true :value @cnt}]
         [:button {:on-click #(swap! cnt inc)}
          "Count"]])))
 
