@@ -6,7 +6,7 @@
 (defn counter []
   (let [cnt (r/atom 0)]
     (fn []
-      [:div
+      [:section
         [:h2 "Counter"]
         [:input {:type "text" :readOnly true :value @cnt}]
         [:button {:on-click #(swap! cnt inc)}
@@ -19,7 +19,7 @@
         to-celsius (fn [fahrenheit]
                      (* (/ 5 9) (- fahrenheit 32)))]
     (fn []
-      [:div
+      [:section
        [:h2 "Temperature Converter"]
 
        [:input {:type "number"
