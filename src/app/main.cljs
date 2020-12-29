@@ -4,7 +4,11 @@
             [clojure.string :refer [starts-with?]]
             [cljs.reader :refer [parse-timestamp]]))
 
-(defn counter []
+(defn counter
+  "The task is to build a frame containing a label or read-only textfield T and
+  a button B. Initially, the value in T is '0' and each click of B increases
+  the value in T by one."
+  []
   (let [cnt (r/atom 0)]
     (fn []
       [:section
@@ -13,7 +17,16 @@
         [:button {:on-click #(swap! cnt inc)}
          "Count"]])))
 
-(defn temperature-converter []
+(defn temperature-converter 
+  "The task is to build a frame containing two textfields Tc and Tf
+  representing the temperature in Celsius and Fahrenheit, respectively.
+  Initially, both Tc and Tf are empty. When the user enters a numerical value
+  into Tc the corresponding value in Tf is automatically updated and vice
+  versa. When the user enters a non-numerical string into Tc the value in Tf is
+  _not_ updated and vice versa. The formula for converting a temperature C in
+  Celsius into a temperature F in Fahrenheit is _C = (F-32) * (5/9)_ and the
+  dual direction is _F = C * (9/5) + 32_."
+  []
   (let [temp (r/atom {}) ; starts off empty
         to-fahrenheit (fn [celsius]
                         (+ 32 (* 9 (/ celsius 5))))
