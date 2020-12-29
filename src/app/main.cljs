@@ -31,7 +31,6 @@
                                (reset! temp {:celsius celsius
                                              :fahrenheit (to-fahrenheit celsius)})))}]
 
-
        [:label {:for "celsius"} "Celsius"]
 
        [:span " = "]
@@ -82,8 +81,8 @@
                                       "red")}
                 :on-change (fn [e]
                              (let [value (-> e .-target .-value)
-                                   ; try to parse the timestamp.
-                                   ; If it's invalid, set ts to nil
+                                   ;; try to parse the timestamp.
+                                   ;; If it's invalid, set ts to nil
                                    ts (try (parse-timestamp value)
                                            (catch :default _ nil))]
                                (swap! state assoc :start-date-valid? (not (nil? ts)))
@@ -139,8 +138,8 @@
                        :max 100}
         state (r/atom initial-state)
         interval-func (fn [] (js/setInterval #(swap! state update :elapsed-tenth-seconds inc) 100))]
-    ; call the interval-func, getting the clear-interval fn we need to stop
-    ; the counter momentarily if it hits the top.
+    ;; call the interval-func, getting the clear-interval fn we need to stop
+    ;; the counter momentarily if it hits the top.
     (swap! state assoc :interval-id (interval-func))
     (fn []
       (when (>= (:elapsed-tenth-seconds @state) (:max @state))
@@ -159,8 +158,8 @@
         [:label {:for "duration"} "Duration"]
         [:input {:type "range" :id "duration" :min 0 :max 200 :value (:max @state)
                  :on-change #(do
-                               ; if we're paused and the duration slider is
-                               ; getting bigger, re-enable the timer.
+                               ;; if we're paused and the duration slider is
+                               ;; getting bigger, re-enable the timer.
                                (when (and (:paused @state) (> (-> % .-target .-value) (:max @state)))
                                  (swap! state assoc :paused false)
                                  (swap! state assoc :interval-id (interval-func)))
@@ -168,11 +167,11 @@
 
        [:button {:type "button"
                  :on-click #(do
-                              ; if we're paused, kick things off again
+                              ;; if we're paused, kick things off again
                               (when (:paused @state)
                                 (swap! state assoc :interval-id (interval-func)))
-                              ; want to keep the interval-id and max, but reset
-                              ; the rest to the initial values
+                              ;; want to keep the interval-id and max, but reset
+                              ;; the rest to the initial values
                               (reset! state (conj initial-state {:interval-id (:interval-id @state)
                                                                  :max (:max @state)})))}
 
