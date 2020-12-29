@@ -89,35 +89,36 @@
                                (swap! state assoc :start-date-valid? (not (nil? ts)))
                                (swap! state assoc :start-date value)))}]
 
-       [:input (merge {:type "date"
-                       :value (:end-date @state)
-                       :style {:background (when-not (:end-date-valid? @state)
-                                             "red")}
-                       :on-change (fn [e]
-                                    (let [value (-> e .-target .-value)
-                                          ; try to parse the timestamp.
-                                          ; If it's invalid, set ts to nil
-                                          ts (try (parse-timestamp value)
-                                                  (catch :default _ nil))]
-                                      (swap! state assoc :end-date-valid? (not (nil? ts)))
-                                      (swap! state assoc :end-date value)))}
-                      ; disable the end date for a one-way flight
-                      (when (= (:selected @state) "one-way")
-                        {:disabled true}))]
+       [:input {:type "date"
+                :value (:end-date @state)
+                :style {:background (when-not (:end-date-valid? @state)
+                                      "red")}
+                :on-change (fn [e]
+                             (let [value (-> e .-target .-value)
+                                   ;; try to parse the timestamp.
+                                   ;; If it's invalid, set ts to nil
+                                   ts (try (parse-timestamp value)
+                                           (catch :default _ nil))]
+                               (swap! state assoc :end-date-valid? (not (nil? ts)))
+                               (swap! state assoc :end-date value)))
+                ;; disable the end date for a one-way flight
+                :disabled (= (:selected @state) "one-way")}]
 
-       [:button (merge {:type "button"
-                        :on-click #(swap! state assoc :booking-message (if (= (:selected @state) "one-way")
-                                                                         (str "You have booked a one-way flight on " (:start-date @state))
-                                                                         (str "You have booked a round-trip flight - out on " (:start-date @state) ", return on " (:end-date @state))))}
-                       ; if either date is not a valid date, disable booking
-                       (if-not (and (:end-date-valid? @state) (:start-date-valid? @state))
-                         {:disabled true}
-                         ; otherwise, we know both dates are valid
-                         (let [start-date (parse-timestamp (:start-date @state))
-                               end-date (parse-timestamp (:end-date @state))]
-                           ; if the end date is before the start date, disable
-                           (when (< end-date start-date)
-                             {:disabled true}))))
+       [:button {:type "button"
+                 :on-click #(swap! state
+                                   assoc :booking-message
+                                   (if (= (:selected @state) "one-way")
+                                     (str "You have booked a one-way flight on " (:start-date @state))
+                                     (str "You have booked a round-trip flight - out on " (:start-date @state) ", return on " (:end-date @state))))
+                 :disabled
+                 ;; if either date is not a valid date, disable booking
+                 (if-not (and (:end-date-valid? @state) (:start-date-valid? @state))
+                   true
+                   ;; otherwise, we know both dates are valid
+                   (let [start-date (parse-timestamp (:start-date @state))
+                         end-date (parse-timestamp (:end-date @state))]
+                     ;; if the end date is before the start date, disable
+                     (< end-date start-date)))}
 
         "Book"]
        [:div (:booking-message @state)]])))
@@ -232,18 +233,16 @@
                  :on-click #(swap! state assoc-in [:people (str (random-uuid))] {:name (:name @state)
                                                                                  :surname (:surname @state)})}
         "Create"]
-       [:button (merge {:type "button"
-                        :on-click #(swap! state assoc-in [:people (:selected @state)] {:name (:name @state)
-                                                                                       :surname (:surname @state)})}
-                       (when (= "" (:selected @state))
-                         {:disabled true}))
+       [:button {:type "button"
+                 :on-click #(swap! state assoc-in [:people (:selected @state)] {:name (:name @state)
+                                                                                :surname (:surname @state)})
+                 :disabled (= "" (:selected @state))}
         "Update"]
-       [:button (merge {:type "button"
-                        :on-click #(do
-                                     (swap! state assoc :people (dissoc (:people @state) (:selected @state)))
-                                     (swap! state assoc :selected ""))}
-                       (when (= "" (:selected @state))
-                         {:disabled true}))
+       [:button {:type "button"
+                 :on-click #(do
+                              (swap! state assoc :people (dissoc (:people @state) (:selected @state)))
+                              (swap! state assoc :selected ""))
+                 :disabled (= "" (:selected @state))}
         "Delete"]])))
 
 (defn app []
