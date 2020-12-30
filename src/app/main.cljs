@@ -13,7 +13,7 @@
   (r/with-let [cnt (r/atom 0)]
     [:section
       [:h2 "Counter"]
-      [:input {:type "text" :readOnly true :value @cnt}]
+      [:input {:type "text" :read-only true :value @cnt}]
       [:button {:on-click #(swap! cnt inc)}
        "Count"]]))
 
