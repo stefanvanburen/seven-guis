@@ -79,13 +79,8 @@
      [:h2 "Flight Booker"]
      [:select {:on-change #(swap! state assoc :selected (-> % .-target .-value))
                :value (:selected @state)}
-      [:option {:value "one-way"
-                :selected (= (:selected @state) "one-way")}
-       "one-way flight"]
-
-      [:option {:value "return"
-                :selected (= (:selected @state) "return")}
-       "return flight"]]
+      [:option {:value "one-way"} "one-way flight"]
+      [:option {:value "return"} "return flight"]]
 
      [:input {:type "date"
               :value (:start-date @state)
