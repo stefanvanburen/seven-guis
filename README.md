@@ -1,6 +1,10 @@
 # seven guis
 
-solutions to [7GUIs](https://eugenkiss.github.io/7guis/).
+Solutions to [7GUIs](https://eugenkiss.github.io/7guis/).
+
+Hosted at https://seven-guis.vanburen.xyz.
+
+## Development
 
 To run, install [`shadow-cljs`](https://shadow-cljs.github.io) and then:
 
