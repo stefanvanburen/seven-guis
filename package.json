@@ -2,6 +2,9 @@
   "name": "seven-guis",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "build": "shadow-cljs release app"
+  },
   "devDependencies": {
     "shadow-cljs": "2.11.8"
   },
