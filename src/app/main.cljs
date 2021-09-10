@@ -383,7 +383,7 @@
                 (doseq [[[x y] {:keys [radius]}] (peek (:history @state))]
                   (.beginPath ctx)
                   (.arc ctx x y radius 0 (* 2 (.-PI js/Math)))
-                  (let [point-in-path (.isPointInPath ctx clickX clickY)]
+                  (let [point-in-path? (.isPointInPath ctx clickX clickY)]
                     (swap! state
                            update-in
                            [:history (dec (count (:history @state))) [x y]]
@@ -392,9 +392,9 @@
                            ;; circle that encompasses this click (this can
                            ;; happen if a circle is resized to encompass
                            ;; another circle).
-                           assoc :selected? (and point-in-path (not @click-inside-circle?)))
+                           assoc :selected? (and point-in-path? (not @click-inside-circle?)))
                     ;; so that we only "select" one circle, keep track if we've already found one.
-                    (when point-in-path
+                    (when point-in-path?
                       (reset! click-inside-circle? true))))
 
                 ;; if the click isn't inside a circle, add a new one.
