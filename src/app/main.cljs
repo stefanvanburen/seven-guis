@@ -10,11 +10,12 @@
   a button B. Initially, the value in T is '0' and each click of B increases
   the value in T by one."
   []
-  (r/with-let [cnt (r/atom 0)]
+  (r/with-let [count (r/atom 0)]
     [:section
       [:h2 "Counter"]
-      [:input {:type "text" :read-only true :value @cnt}]
-      [:button {:on-click #(swap! cnt inc)}
+      [:output {:for "counter"} @count]
+      [:button {:on-click #(swap! count inc)
+                :id "counter"}
        "Count"]]))
 
 (defn temperature-converter
@@ -82,7 +83,8 @@
       [:option {:value "one-way"} "one-way flight"]
       [:option {:value "return"} "return flight"]]
 
-     [:input {:type "date"
+     [:input {:id "start-date"
+              :type "date"
               :value (:start-date @state)
               :style {:background (when-not (:start-date-valid? @state)
                                     "red")}
@@ -95,7 +97,8 @@
                              (swap! state assoc :start-date-valid? (not (nil? ts)))
                              (swap! state assoc :start-date value)))}]
 
-     [:input {:type "date"
+     [:input {:id "end-date"
+              :type "date"
               :value (:end-date @state)
               :style {:background (when-not (:end-date-valid? @state)
                                     "red")}
@@ -127,7 +130,11 @@
                    (< end-date start-date)))}
 
       "Book"]
-     [:div (:booking-message @state)]]))
+     [:output {:for (if (= (:selected @state) "one-way")
+                      "start-date"
+                      "start-date end-date")}
+
+      (:booking-message @state)]]))
 
 (defn timer
   "The task is to build a frame containing a gauge G for the elapsed time e, a
