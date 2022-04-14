@@ -2,14 +2,20 @@
 
 Solutions to [7GUIs](https://eugenkiss.github.io/7guis/).
 
-Hosted at https://seven-guis.vanburen.xyz.
+Hosted at <https://seven-guis.vanburen.xyz>.
 
 ## Development
 
-To run, install [`shadow-cljs`](https://shadow-cljs.github.io) and then:
+Install development dependencies:
 
+```sh
+npm i -D
 ```
-$ shadow-cljs watch app
+
+Run the `shadow-cljs` watcher:
+
+```sh
+npm run dev
 ```
 
 Once the watcher is running, open [localhost:8080](http://localhost:8080).
