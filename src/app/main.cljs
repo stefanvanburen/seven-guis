@@ -6,18 +6,20 @@
             [app.flight-booker :refer [flight-booker]]
             [app.timer :refer [timer]]
             [app.crud :refer [crud]]
-            [app.circle-drawer :refer [circle-drawer]]))
+            [app.circle-drawer :refer [circle-drawer]]
+            [app.cells :refer [cells]]))
 
 (defn app []
   [:main
    [:h1 "Seven GUIs"]
    [:a {:href "https://github.com/stefanvanburen/seven-guis"} "Source Code"]
    [counter]
-   [temperature-converter]
-   [flight-booker]
-   [timer]
-   [crud]
-   [circle-drawer]])
+   ; [temperature-converter]
+   ; [flight-booker]
+   ; [timer]
+   ; [crud]
+   ; [circle-drawer]
+   [cells]])
 
 (defn ^:export main! []
   (rdom/render [app] (js/document.querySelector "#app")))
