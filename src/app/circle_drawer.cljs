@@ -1,5 +1,4 @@
 (ns app.circle-drawer
-  {:clj-kondo/config '{:lint-as {reagent.core/with-let clojure.core/let}}}
   (:require [reagent.core :as r]))
 
 (defn circle-drawer

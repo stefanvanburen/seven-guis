@@ -1,5 +1,4 @@
 (ns app.main
-  {:clj-kondo/config '{:lint-as {reagent.core/with-let clojure.core/let}}}
   (:require [reagent.dom :as rdom]
             [app.counter :refer [counter]]
             [app.temperature-converter :refer [temperature-converter]]
@@ -21,5 +20,6 @@
    ; [circle-drawer]
    [cells]])
 
+#_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}
 (defn ^:export main! []
   (rdom/render [app] (js/document.querySelector "#app")))
