@@ -12,7 +12,7 @@
   [:main
    [:h1 "Seven GUIs"]
    [:a {:href "https://github.com/stefanvanburen/seven-guis"} "Source Code"]
-   [counter]
+   ; [counter]
    ; [temperature-converter]
    ; [flight-booker]
    ; [timer]
