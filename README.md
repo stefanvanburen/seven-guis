@@ -1,6 +1,6 @@
 # seven guis
 
-Solutions to [7GUIs](https://eugenkiss.github.io/7guis/).
+Solutions to [7GUIs](https://7guis.github.io/7guis/).
 
 Hosted at <https://seven-guis.vanburen.xyz>.
 
