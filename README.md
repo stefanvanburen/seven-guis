@@ -1,5 +1,8 @@
 # seven guis
 
+> **Note**
+> The canonical source for this repository is now at https://git.sr.ht/~svbn/seven-guis.
+
 Solutions to [7GUIs](https://7guis.github.io/7guis/).
 
 Hosted at <https://seven-guis.vanburen.xyz>.
