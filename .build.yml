@@ -2,7 +2,7 @@ image: archlinux
 packages:
   - nodejs
   - npm
-  - openjdk
+  - jre-openjdk-headless
   - hut
 oauth: pages.sr.ht/PAGES:RW
 environment:
