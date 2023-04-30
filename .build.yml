@@ -1,0 +1,14 @@
+image: archlinux
+packages:
+  - nodejs
+  - npm
+  - openjdk
+  - hut
+oauth: pages.sr.ht/PAGES:RW
+environment:
+  site: seven-guis
+tasks:
+  - build: |
+      cd $site
+      npm install
+      npm run build
