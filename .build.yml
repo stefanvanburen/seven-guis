@@ -5,10 +5,16 @@ packages:
   - jre-openjdk-headless
   - hut
 oauth: pages.sr.ht/PAGES:RW
-environment:
-  site: seven-guis
 tasks:
   - build: |
-      cd $site
+      cd seven-guis
       npm install
       npm run build
+      tar -C public -cvz . > site.tar.gz
+      # Only upload on the main branch.
+      if [ "$(git rev-parse origin/main)" != "$(git rev-parse HEAD)" ]
+      then
+        echo "Not on main branch, not publishing!"
+        exit 0
+      fi
+      hut pages publish -d seven-guis.vanburen.xyz site.tar.gz
