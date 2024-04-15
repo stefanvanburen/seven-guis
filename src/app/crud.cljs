@@ -3,7 +3,6 @@
   (:require [reagent.core :as r]
             [clojure.string :refer [starts-with?]]))
 
-
 (defn crud
   "The task is to build a frame containing the following elements: a textfield
   Tprefix, a pair of textfields Tname and Tsurname, a listbox L, buttons BC, BU
@@ -39,9 +38,9 @@
       (let [prefix-filter (:filter @state)
             people (filter (fn [[_ person]]
                              (starts-with? (:surname person) prefix-filter))
-                          (:people @state))]
-       (for [[uuid person] people]
-         ^{:key uuid} [:option {:value uuid} (str (:surname person) ", " (:name person))]))]
+                           (:people @state))]
+        (for [[uuid person] people]
+          ^{:key uuid} [:option {:value uuid} (str (:surname person) ", " (:name person))]))]
 
      ;; name input
      [:fieldset {:style {:border "none"}}
