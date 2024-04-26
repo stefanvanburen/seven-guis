@@ -1,5 +1,5 @@
 (ns app.main
-  (:require [reagent.dom :as rdom]
+  (:require [reagent.dom.client :as rdomc]
             [app.counter :refer [counter]]
             [app.temperature-converter :refer [temperature-converter]]
             [app.flight-booker :refer [flight-booker]]
@@ -18,6 +18,6 @@
    [crud]
    [circle-drawer]])
 
-#_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}
 (defn ^:export main! []
-  (rdom/render [app] (js/document.querySelector "#app")))
+  (let [root (rdomc/create-root (js/document.getElementById "app"))]
+    (rdomc/render root [app])))
