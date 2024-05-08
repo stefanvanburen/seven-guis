@@ -10,6 +10,12 @@
 (defn app []
   [:main
    [:h1 "Seven GUIs"]
+   [:h2
+    "An implementation of "
+    [:a {:href "https://eugenkiss.github.io/7guis/"} "7GUIs"]
+    " by "
+    [:a {:href "https://stefan.vanburen.xyz"} "Stefan VanBuren"]]
+
    [:a {:href "https://github.com/stefanvanburen/seven-guis"} "Source Code"]
    [counter]
    [temperature-converter]
