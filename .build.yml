@@ -18,5 +18,5 @@ tasks:
         echo "Not on main branch, not publishing!"
         exit 0
       fi
-      tar -C public -cvz . > site.tar.gz
-      hut pages publish -d seven-guis.vanburen.xyz site.tar.gz
+      tar --directory public --create --gzip --verbose . > site.tar.gz
+      hut pages publish --domain seven-guis.vanburen.xyz site.tar.gz
