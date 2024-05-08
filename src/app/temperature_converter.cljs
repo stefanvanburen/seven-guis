@@ -19,7 +19,7 @@
                             (* (/ 5 9) (- fahrenheit 32)))]
 
     [:section
-     [:h2 "Temperature Converter"]
+     [:h2 [:a {:href "https://eugenkiss.github.io/7guis/tasks#temp"} "Temperature Converter"]]
 
      [:input {:type "number"
               :value (:celsius @temp)

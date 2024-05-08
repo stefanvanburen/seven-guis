@@ -24,7 +24,7 @@
                               :name ""
                               :surname ""})]
     [:section
-     [:h2 "CRUD"]
+     [:h2 [:a {:href "https://eugenkiss.github.io/7guis/tasks#crud"} "CRUD"]]
      ;; filter
      [:fieldset {:style {:border "none"}}
       [:label {:for "prefix"} "Filter prefix:"]

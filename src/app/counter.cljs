@@ -9,7 +9,7 @@
   []
   (r/with-let [count (r/atom 0)]
     [:section
-     [:h2 "Counter"]
+     [:h2 [:a {:href "https://eugenkiss.github.io/7guis/tasks#counter"} "Counter"]]
      [:output {:for "counter"} @count]
      [:button {:on-click #(swap! count inc)
                :id "counter"}

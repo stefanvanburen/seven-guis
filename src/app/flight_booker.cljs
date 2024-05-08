@@ -22,7 +22,7 @@
                               :end-date-valid? true})]
 
     [:section
-     [:h2 "Flight Booker"]
+     [:h2 [:a {:href "https://eugenkiss.github.io/7guis/tasks#flight"} "Flight Booker"]]
      [:select {:on-change #(swap! state assoc :selected (-> % .-target .-value))
                :value (:selected @state)}
       [:option {:value "one-way"} "one-way flight"]

@@ -25,7 +25,7 @@
         (swap! state assoc :paused true)
         (js/clearInterval (:interval-id @state)))
       [:section
-       [:h2 "Timer"]
+       [:h2 [:a {:href "https://eugenkiss.github.io/7guis/tasks#timer"} "Timer"]]
 
        [:fieldset
         [:label {:for "elapsed-time"} "Elapsed Time:"]

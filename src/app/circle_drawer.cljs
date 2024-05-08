@@ -43,7 +43,7 @@
       :reagent-render
       (fn []
         [:section
-         [:h2 "Circle Drawer"]
+         [:h2 [:a {:href "https://eugenkiss.github.io/7guis/tasks#circle"} "Circle Drawer"]]
 
          [:fieldset {:style {:border "none"}}
 
