@@ -13,7 +13,7 @@ tasks:
   - upload: |
       cd seven-guis
       # Only upload on the main branch.
-      if [ "$(git rev-parse origin/main)" != "$(git rev-parse HEAD)" ]
+      if [ "$GIT_REF" != "refs/heads/main" ]
       then
         echo "Not on main branch, not publishing!"
         exit 0
