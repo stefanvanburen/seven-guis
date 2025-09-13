@@ -1,5 +1,7 @@
 # seven guis
 
+[![builds.sr.ht status](https://builds.sr.ht/~svbn/seven-guis/commits/main/.build.yml.svg)](https://builds.sr.ht/~svbn/seven-guis/commits/main/.build.yml?)
+
 Solutions to [7GUIs](https://7guis.github.io/7guis/).
 
 Hosted at <https://seven-guis.vanburen.xyz>.
