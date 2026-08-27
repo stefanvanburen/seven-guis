@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@xmit.co/xmit": "^0.5.2-0",
-    "shadow-cljs": "^3.2.0"
+    "shadow-cljs": "^3.4.12"
   },
   "dependencies": {
     "react": "^18.3.0",
