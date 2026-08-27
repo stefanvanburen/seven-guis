@@ -3,9 +3,11 @@
   "private": true,
   "scripts": {
     "build": "shadow-cljs release app",
+    "deploy": "xmit seven-guis.vanburen.xyz public/",
     "dev": "shadow-cljs watch app"
   },
   "devDependencies": {
+    "@xmit.co/xmit": "^0.5.2-0",
     "shadow-cljs": "^3.2.0"
   },
   "dependencies": {

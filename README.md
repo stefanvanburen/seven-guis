@@ -1,6 +1,6 @@
 # seven guis
 
-[![builds.sr.ht status](https://builds.sr.ht/~svbn/seven-guis/commits/main/.build.yml.svg)](https://builds.sr.ht/~svbn/seven-guis/commits/main/.build.yml?)
+[![CI](https://github.com/stefanvanburen/seven-guis/actions/workflows/ci.yaml/badge.svg)](https://github.com/stefanvanburen/seven-guis/actions/workflows/ci.yaml)
 
 Solutions to [7GUIs](https://7guis.github.io/7guis/).
 
