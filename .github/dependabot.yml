@@ -16,3 +16,10 @@ updates:
       timezone: "America/New_York"
     cooldown:
       default-days: 7
+    groups:
+      # react and react-dom are versioned in lockstep upstream, and a build
+      # with mismatched majors fails, so they have to land in one pull request.
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
